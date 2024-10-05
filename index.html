@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Schedule</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Train Schedule</h1>
+    <h2>List of Trains</h2>
+    <table id="trainTable">
+        <tr>
+            <th>Train No</th>
+            <th>Arrival</th>
+            <th>Departure</th>
+        </tr>
+        <tr>
+            <td>A120</td>
+            <td>10:00 AM</td>
+            <td>11:45 AM</td>
+        </tr>
+    </table>
+
+    <h4>Add Train Schedule</h4>
+    <input type="text" id="trainNo" placeholder="Enter train number">
+    <input type="text" id="arrivalTime" placeholder="Enter arrival time">
+    <input type="text" id="departureTime" placeholder="Enter departure time">
+    <button id="add" onclick="addschedule()">Add</button>
+
+    <script>
+        function addschedule() {
+            let trainNo = document.getElementById("trainNo").value;
+            let arrivalTime = document.getElementById("arrivalTime").value;
+            let departureTime = document.getElementById("departureTime").value;
+            if (trainNo === "" || arrivalTime === "" || departureTime === "") {
+                alert("Please fill in all the fields.");
+                return;
+            }
+            var table = document.getElementById("trainTable");
+            var newRow = table.insertRow();
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+            cell1.innerHTML = trainNo;
+            cell2.innerHTML = arrivalTime;
+            cell3.innerHTML = departureTime;
+            document.getElementById("trainNo").value = "";
+            document.getElementById("arrivalTime").value = "";
+            document.getElementById("departureTime").value = "";
+        }
+    </script>
+</body>
+</html>
